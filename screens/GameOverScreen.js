@@ -1,7 +1,8 @@
 import React from 'react';
-import { StyleSheet, View, Text, Button, Image } from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { StyleSheet, View, Text, Image } from 'react-native';
+import Colors from '../constants/colors';
 import DefaultStyles from '../constants/default-styles';
+import MainButton from '../components/MainButton';
 
 const GameOverScreen = (props) => {
   return (
@@ -23,7 +24,7 @@ const GameOverScreen = (props) => {
         guess the number:{' '}
         <Text style={styles.highlight}>{props.userNumber}</Text>
       </Text>
-      <Button title="NEW GAME" onPress={props.onRestart} />
+      <MainButton onPress={props.onRestart}>NEW GAME</MainButton>
     </View>
   );
 };
