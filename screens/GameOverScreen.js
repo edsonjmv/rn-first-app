@@ -9,7 +9,10 @@ const GameOverScreen = (props) => {
       <View style={styles.imageContainer}>
         <Image
           style={styles.image}
-          source={require('../assets/success.png')}
+          // source={require('../assets/success.png')}
+          source={{
+            uri: 'https://ichef.bbci.co.uk/news/976/cpsprodpb/7625/production/_111254203_8d8f9dd1-cecb-4acd-a4d9-9455dffd652d.jpg'
+          }}
           resizeMode="cover"
         />
       </View>
