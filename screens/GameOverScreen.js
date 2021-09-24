@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, Button, Image } from 'react-native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 import DefaultStyles from '../constants/default-styles';
 
 const GameOverScreen = (props) => {
@@ -9,17 +10,19 @@ const GameOverScreen = (props) => {
       <View style={styles.imageContainer}>
         <Image
           style={styles.image}
-          // source={require('../assets/success.png')}
-          source={{
+          source={require('../assets/success.png')}
+          /* source={{
             uri: 'https://ichef.bbci.co.uk/news/976/cpsprodpb/7625/production/_111254203_8d8f9dd1-cecb-4acd-a4d9-9455dffd652d.jpg'
-          }}
+          }} */
           resizeMode="cover"
         />
       </View>
-      <Text style={DefaultStyles.bodyText}>
-        Number of rounds: {props.roundsNumber}
+      <Text style={{ ...DefaultStyles.bodyText, ...styles.resultsText }}>
+        Your phone needed{' '}
+        <Text style={styles.highlight}>{props.roundsNumber}</Text> rounds to
+        guess the number:{' '}
+        <Text style={styles.highlight}>{props.userNumber}</Text>
       </Text>
-      <Text style={DefaultStyles.bodyText}>Number was: {props.userNumber}</Text>
       <Button title="NEW GAME" onPress={props.onRestart} />
     </View>
   );
@@ -43,6 +46,16 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: '100%'
+  },
+  resultsText: {
+    textAlign: 'center',
+    marginHorizontal: 40,
+    marginBottom: 20,
+    fontSize: 20
+  },
+  highlight: {
+    color: Colors.primary,
+    fontFamily: 'open-sans-bold'
   }
 });
 
