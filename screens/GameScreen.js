@@ -8,6 +8,7 @@ import {
   Dimensions
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import * as ScreenOrientation from 'expo-screen-orientation';
 
 import Card from '../components/Card';
 import NumberContainer from '../components/NumberContainer';
@@ -35,6 +36,7 @@ const renderListItem = (listLength, itemData) => {
 };
 
 const GameScreen = (props) => {
+  ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
   const initialGuess = generateRandomBetween(1, 100, props.userChoice);
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
   const [pastGuesses, setPastGuesses] = useState([initialGuess]);
@@ -89,7 +91,7 @@ const GameScreen = (props) => {
     setPastGuesses((curPastGuesses) => [nextNumber, ...curPastGuesses]);
   };
 
-  if (availableDeviceHeight) {
+  if (availableDeviceHeight < 350) {
     return (
       <View style={styles.screen}>
         <Text style={DefaultStyles.titleText}>Opponent's guess:</Text>
